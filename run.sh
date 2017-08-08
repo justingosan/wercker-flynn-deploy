@@ -22,9 +22,9 @@ fi
 
 
 rm -rf .git
-git config user.email "werckerbot@purple-technology.com"
-git config user.name "werckerbot"
 git init
+git config --global user.email "werckerbot@purple-technology.com"
+git config --global user.name "werckerbot"
 git add --all .
 git commit -am "[ci skip] deploy from $WERCKER_STARTED_BY"
 
