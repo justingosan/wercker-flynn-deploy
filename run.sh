@@ -25,9 +25,7 @@ if [ ! -n "$FLYNN_APP_NAME" ]; then
     exit 1
 fi
 
-ls
-mkdir ~/bin
-L=~/bin/flynn && curl -sSL -A "`uname -sp`" https://dl.flynn.io/cli | zcat >$L && chmod +x $L
-~/bin/flynn/bin/flynn cluster add -p $FLYNN_TLSPIN $FLYNN_CLUSTER_NAME $FLYNN_CONTROLLER_DOMAIN $FLYNN_CONTROLLER_KEY
-~/bin/flynn/bin/flynn -a $FLYNN_APP_NAME remote add
+L=/usr/local/bin/flynn && curl -sSL -A "`uname -sp`" https://dl.flynn.io/cli | zcat >$L && chmod +x $L
+flynn cluster add -p $FLYNN_TLSPIN $FLYNN_CLUSTER_NAME $FLYNN_CONTROLLER_DOMAIN $FLYNN_CONTROLLER_KEY
+flynn -a $FLYNN_APP_NAME remote add
 git push -f flynn HEAD:refs/heads/master
