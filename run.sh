@@ -25,9 +25,8 @@ if [ ! -n "$FLYNN_APP_NAME" ]; then
     exit 1
 fi
 
-echo $FLYNN_CLUSTER_NAME
-echo $FLYNN_CONTROLLER_DOMAIN
-echo $FLYNN_APP_NAME
+echo flynn cluster add -p $FLYNN_TLSPIN $FLYNN_CLUSTER_NAME $FLYNN_CONTROLLER_DOMAIN $FLYNN_CONTROLLER_KEY
+
 L=/usr/local/bin/flynn && curl -sSL -A "`uname -sp`" https://dl.flynn.io/cli | zcat >$L && chmod +x $L
 flynn cluster add -p $FLYNN_TLSPIN $FLYNN_CLUSTER_NAME $FLYNN_CONTROLLER_DOMAIN $FLYNN_CONTROLLER_KEY
 flynn -a $FLYNN_APP_NAME remote add
