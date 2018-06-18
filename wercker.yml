@@ -15,4 +15,4 @@ publish:
       packages: ca-certificates
 
     - internal/publish-step:
-      owner: ThinkingPandas
+      owner: justingosan
