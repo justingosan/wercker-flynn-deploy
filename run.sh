@@ -43,4 +43,5 @@ L=/usr/local/bin/flynn && curl -sSL -A "`uname -sp`" https://dl.flynn.io/cli | z
 flynn cluster add -p $FLYNN_TLS_CERT $FLYNN_CLUSTER_NAME $FLYNN_CONTROLLER_DOMAIN $FLYNN_CONTROLLER_KEY
 flynn -a $FLYNN_APP_NAME remote add
 echo $FLYNN_CERT_PEM > /root/.flynn/ca-certs/default.pem
+chmod 644 /root/.flynn/ca-certs/default.pem
 git push -f flynn master
