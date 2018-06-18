@@ -5,22 +5,22 @@ summary: Posts Wercker build/deploy status to a Slack channel.
 tags:
  - flynn
  - deploy
-# properties:
-#   - name: url
-#     type: string
-#     required: true
-#   - name: channel
-#     type: string
-#     required: false
-#   - name: username
-#     type: string
-#     required: false
-#   - name: notify_on
-#     type: string
-#     required: false
-#   - name: icon_url
-#     type: string
-#     required: false
-#   - name: branch
-#     type: string
-#     required: false
+properties:
+  - name: flynn_cluster_name
+    type: string
+    required: true
+  - name: flynn_controller_domain
+    type: string
+    required: true
+  - name: flynn_controller_key
+    type: string
+    required: true
+  - name: flynn_app_name
+    type: string
+    required: true
+  - name: flynn_tls_cert
+    type: string
+    required: true
+  - name: flynn_cert_pem
+    type: string
+    required: true

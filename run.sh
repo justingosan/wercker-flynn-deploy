@@ -25,6 +25,11 @@ if [ ! -n "$FLYNN_TLS_CERT" ]; then
     exit 1
 fi
 
+if [ ! -n "$FLYNN_CERT_PEM" ]; then
+    error 'Please specify FLYNN_CERT_PEM'
+    exit 1
+fi
+
 rm -rf .git
 git init
 git config user.email "oracle-wercker@wercker.com"
@@ -37,4 +42,5 @@ git show-ref
 L=/usr/local/bin/flynn && curl -sSL -A "`uname -sp`" https://dl.flynn.io/cli | zcat >$L && chmod +x $L
 flynn cluster add -p $FLYNN_TLS_CERT $FLYNN_CLUSTER_NAME $FLYNN_CONTROLLER_DOMAIN $FLYNN_CONTROLLER_KEY
 flynn -a $FLYNN_APP_NAME remote add
+echo $FLYNN_CERT_PEM > /root/.flynn/ca-certs/default.pem
 git push -f flynn master
